@@ -9,7 +9,10 @@ res = requests.get(password_api_url)
 print(res)
 
 def request_api_data(query_char):
-    pass
+    url = "https://api.pwnedpasswords.com/range/" + query_char
+    res = requests.get(url)
+    if res.status_code != 200:
+        raise RuntimeError('Error fetching: {}')
 
 def pwned_api_check(password):
     pass
