@@ -1,0 +1,16 @@
+from selenium import webdriver
+web_browser = webdriver.Chrome('./chromedriver.exe')
+# print(web_browser)
+web_browser.get('https://www.seleniumeasy.com/test/basic-first-form-demo.html')
+web_browser.maximize_window()
+print('Selenium Easy Demo' in web_browser.title)
+show_message_button = web_browser.find_element_by_class_name('btn-default')
+print(show_message_button.get_attribute('innerHTML'))
+user_message = web_browser.find_element_by_id('user-message')
+user_message.clear()
+user_message.send_keys('This is cool!!')
+show_message_button.click()
+output_message = web_browser.find_element_by_id('display')
+print('This is cool!!' in output_message.text)
+web_browser.close()
+# web_browser.quit() # Close all instances of browser
